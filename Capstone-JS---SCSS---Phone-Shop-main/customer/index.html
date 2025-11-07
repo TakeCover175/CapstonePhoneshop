@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Phone Shop - Customer</title>
+        <!-- GG Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+            rel="stylesheet"
+        />
+        <!-- Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Font Awesome -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        />
+        <!-- CSS -->
+        <link rel="stylesheet" href="../assets/css/customer.css" />
+    </head>
+    <body>
+        <!-- Header -->
+        <header class="header">
+            <div class="container header-content">
+                <a href="#" class="logo">Phone Shop</a>
+
+                <!-- Toggle button trên mobile -->
+                <button id="menu-toggle" class="menu-toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <!-- Navbar -->
+                <nav id="navbar" class="navbar">
+                    <ul class="nav-list">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Shop</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                    <div class="btn-group">
+                        <button class="btnNav">Login</button>
+                        <button class="btnNav">Register</button>
+                        <button class="btnNav cart-btn">
+                            <i class="fa-solid fa-cart-shopping"></i> Cart
+                        </button>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Hero section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h1>Phone Shop</h1>
+                    <h3>Best Smartphone of 2025!</h3>
+                    <p>
+                        Cras tortor mi, lobortis quis ornare in, varius
+                        scelerisque urna. Vivamus imperdiet dolor nec odio
+                        convallis consequat.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn-outline">
+                            <i class="fa fa-info-circle"></i> More Info
+                        </button>
+                        <button class="btn-fill">
+                            <i class="fa fa-shopping-cart"></i> Shop
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="../assets/img/banner-01.png" alt="CyberPhone" />
+                </div>
+            </div>
+        </section>
+
+        <!-- PRODUCTS -->
+        <section class="products">
+            <div class="container">
+                <h2>Products</h2>
+                <div style="margin-bottom: 20px">
+                    <label
+                        for="product-filter"
+                        style="margin-right: 10px; font-weight: 600"
+                        >Lọc theo loại:</label
+                    >
+                    <select
+                        id="product-filter"
+                        style="
+                            padding: 8px 16px;
+                            border: 1px solid #1650bb;
+                            border-radius: 6px;
+                            font-size: 16px;
+                        "
+                    >
+                        <option value="all">Tất cả</option>
+                        <option value="iphone">iPhone</option>
+                        <option value="samsung">Samsung</option>
+                    </select>
+                </div>
+
+                <div id="product-grid" class="product-grid">
+                    <div class="product-card">
+                        <img src="../assets/img/17procam.png" alt="" />
+                        <h3>iPhone 17 Pro</h3>
+                        <p class="category">iPhone</p>
+                        <p class="price">$99.99</p>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i
+                            ><i class="fa-solid fa-star"></i
+                            ><i class="fa-solid fa-star"></i
+                            ><i class="fa-solid fa-star"></i
+                            ><i class="fa-solid fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container footer-grid">
+                <div class="footer-col">
+                    <h2>Phone Shop</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing
+                        elit. Veniam, cupiditate. Nesciunt ex repellendus
+                        perspiciatis corporis labore dolore culpa iusto
+                        quibusdam.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Shop</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i> HCM City
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone"></i> +84 123 456 789
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-envelope"></i>
+                            abc@gmail.com
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                © 2025 <span>Phone Shop</span>. All rights reserved.
+            </div>
+        </footer>
+
+        <!-- cart modal -->
+        <div
+            id="cart-modal"
+            class="cart-modal"
+            style="
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 2000;
+                overflow-y: auto;
+            "
+        >
+            <div
+                class="cart-modal-content"
+                style="
+                    background: white;
+                    margin: 50px auto;
+                    padding: 30px;
+                    max-width: 900px;
+                    border-radius: 10px;
+                    position: relative;
+                "
+            >
+                <button
+                    id="close-cart"
+                    style="
+                        position: absolute;
+                        top: 15px;
+                        right: 15px;
+                        background: none;
+                        border: none;
+                        font-size: 24px;
+                        cursor: pointer;
+                        color: #333;
+                    "
+                >
+                    &times;
+                </button>
+                <h2 style="margin-bottom: 20px">Giỏ hàng của bạn</h2>
+                <table
+                    style="
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-bottom: 20px;
+                    "
+                >
+                    <thead>
+                        <tr style="border-bottom: 2px solid #ddd">
+                            <th style="padding: 10px; text-align: left">
+                                Hình ảnh
+                            </th>
+                            <th style="padding: 10px; text-align: left">
+                                Tên sản phẩm
+                            </th>
+                            <th style="padding: 10px; text-align: left">Giá</th>
+                            <th style="padding: 10px; text-align: left">
+                                Số lượng
+                            </th>
+                            <th style="padding: 10px; text-align: left">
+                                Thành tiền
+                            </th>
+                            <th style="padding: 10px; text-align: left">
+                                Thao tác
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-table-body"></tbody>
+                </table>
+                <div
+                    style="
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-top: 20px;
+                        padding-top: 20px;
+                        border-top: 2px solid #ddd;
+                    "
+                >
+                    <div>
+                        <strong
+                            >Tổng tiền:
+                            <span id="cart-total">0 VND</span></strong
+                        >
+                    </div>
+                    <button
+                        id="checkout-btn"
+                        class="btn-fill"
+                        style="padding: 10px 30px"
+                    >
+                        Thanh toán
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scripts -->
+        <script src="../customer/model/Products.js"></script>
+        <script src="../customer/model/CartItem.js"></script>
+        <script src="../customer/services/productService.js"></script>
+        <script src="../customer/view/productView.js"></script>
+        <script src="../customer/view/cartView.js"></script>
+        <script src="../customer/controller/customerController.js"></script>
+
+        <script>
+            // Toggle navbar trên mobile
+            const toggleBtn = document.getElementById("menu-toggle");
+            const navbar = document.getElementById("navbar");
+            toggleBtn.addEventListener("click", () => {
+                navbar.classList.toggle("active");
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,132 @@
+.products {
+    background: $light-bg;
+    padding: 100px 0 80px;
+    text-align: center;
+    margin-top: 40px;
+
+    h2 {
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 40px;
+    }
+
+    .filter-btn {
+        @include button-style($primary-color, #fff);
+        margin-bottom: 40px;
+
+        &:hover {
+            background: $primary-hover;
+        }
+    }
+
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        justify-content: center;
+
+        @include responsive(tablet) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include responsive(mobile) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .product-card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: $shadow;
+        transition: transform 0.3s;
+        padding: 24px;
+
+        &:hover {
+            transform: translateY(-6px);
+        }
+
+        img {
+            width: 100%;
+            height: 260px;
+            object-fit: contain;
+            margin-bottom: 16px;
+        }
+
+        .category {
+            color: $muted-text;
+            font-size: 0.9rem;
+        }
+
+        .price {
+            color: $primary-color;
+            font-weight: 600;
+            margin: 6px 0 10px;
+        }
+
+        .stars {
+            color: #facc15;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+// Cart Modal Styles
+.cart-modal {
+    .cart-modal-content {
+        .btn-decrease,
+        .btn-increase {
+            background: $primary-color;
+            color: #fff;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s;
+
+            &:hover {
+                background: $primary-hover;
+            }
+        }
+
+        .quantity {
+            margin: 0 10px;
+            font-weight: 600;
+            min-width: 30px;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-remove {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+
+            &:hover {
+                background: #c0392b;
+            }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+
+            th {
+                background: #f8f9fa;
+                padding: 12px;
+                text-align: left;
+                font-weight: 600;
+            }
+
+            td {
+                padding: 12px;
+                border-bottom: 1px solid #eee;
+            }
+        }
+    }
+}

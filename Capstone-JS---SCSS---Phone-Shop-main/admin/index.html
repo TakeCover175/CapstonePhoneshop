@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Phone Shop - Admin</title>
+        <!-- GG Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+            rel="stylesheet"
+        />
+        <!-- Font Awesome -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        />
+        <!-- Axios -->
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <!-- CSS -->
+        <link rel="stylesheet" href="../assets/css/admin.css" />
+    </head>
+    <body>
+        <!-- header -->
+        <header class="admin-header">
+            <div class="container">
+                <h1>Admin Panel - Quản lý sản phẩm</h1>
+                <a href="../customer/index.html" class="back-link">
+                    <i class="fa-solid fa-arrow-left"></i> Về trang khách hàng
+                </a>
+            </div>
+        </header>
+
+        <!-- main -->
+        <main class="admin-main">
+            <div class="container">
+                <!-- tìm kiếm và sắp xếp -->
+                <div class="admin-controls">
+                    <div class="search-box">
+                        <i class="fa-solid fa-search"></i>
+                        <input
+                            type="text"
+                            id="search-input"
+                            placeholder="Tìm kiếm sản phẩm theo tên..."
+                        />
+                    </div>
+                    <div class="sort-box">
+                        <label for="sort-select">Sắp xếp theo giá:</label>
+                        <select id="sort-select">
+                            <option value="">Mặc định</option>
+                            <option value="asc">Giá tăng dần</option>
+                            <option value="desc">Giá giảm dần</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- form thêm sửa sp -->
+                <div class="admin-form-section">
+                    <h2 id="form-title">Thêm sản phẩm mới</h2>
+                    <form id="product-form">
+                        <input type="hidden" id="product-id" />
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="product-name">Tên sản phẩm *</label>
+                                <input
+                                    type="text"
+                                    id="product-name"
+                                    required
+                                    placeholder="Nhập tên sản phẩm"
+                                />
+                                <span
+                                    class="error-message"
+                                    id="name-error"
+                                ></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="product-price">Giá (VND) *</label>
+                                <input
+                                    type="number"
+                                    id="product-price"
+                                    required
+                                    min="0"
+                                    placeholder="Nhập giá sản phẩm"
+                                />
+                                <span
+                                    class="error-message"
+                                    id="price-error"
+                                ></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="product-screen">Màn hình</label>
+                                <input
+                                    type="text"
+                                    id="product-screen"
+                                    placeholder="Nhập thông tin màn hình"
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label for="product-black-camera"
+                                    >Camera sau</label
+                                >
+                                <input
+                                    type="text"
+                                    id="product-black-camera"
+                                    placeholder="Nhập thông tin camera sau"
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label for="product-front-camera"
+                                    >Camera trước</label
+                                >
+                                <input
+                                    type="text"
+                                    id="product-front-camera"
+                                    placeholder="Nhập thông tin camera trước"
+                                />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="product-img">URL hình ảnh *</label>
+                                <input
+                                    type="url"
+                                    id="product-img"
+                                    required
+                                    placeholder="https://example.com/image.jpg"
+                                />
+                                <span
+                                    class="error-message"
+                                    id="img-error"
+                                ></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="product-type"
+                                    >Loại sản phẩm *</label
+                                >
+                                <select id="product-type" required>
+                                    <option value="">Chọn loại</option>
+                                    <option value="iphone">iPhone</option>
+                                    <option value="samsung">Samsung</option>
+                                </select>
+                                <span
+                                    class="error-message"
+                                    id="type-error"
+                                ></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="product-desc">Mô tả</label>
+                            <textarea
+                                id="product-desc"
+                                rows="4"
+                                placeholder="Nhập mô tả sản phẩm"
+                            ></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn-submit">
+                                <i class="fa-solid fa-save"></i> Lưu
+                            </button>
+                            <button
+                                type="button"
+                                class="btn-cancel"
+                                id="cancel-btn"
+                                style="display: none"
+                            >
+                                <i class="fa-solid fa-times"></i> Hủy
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- danh sách sp -->
+                <div class="admin-table-section">
+                    <h2>Danh sách sản phẩm</h2>
+                    <div class="table-container">
+                        <table id="products-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Hình ảnh</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Giá</th>
+                                    <th>Loại</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody id="products-table-body">
+                                <tr>
+                                    <td colspan="6" style="text-align: center">
+                                        Đang tải dữ liệu...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Scripts -->
+        <script src="../customer/model/Products.js"></script>
+        <script src="../admin/services/adminProductService.js"></script>
+        <script src="../admin/view/adminProductView.js"></script>
+        <script src="../admin/controller/adminController.js"></script>
+    </body>
+</html>

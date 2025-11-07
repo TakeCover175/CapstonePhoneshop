@@ -1,0 +1,22 @@
+.btnNav,
+.btn-outline,
+.btn-fill {
+    @include button-style(
+        transparent,
+        $primary-color,
+        1px solid $primary-color
+    );
+
+    &:hover {
+        background: $primary-color;
+        color: #fff;
+    }
+}
+
+.btn-fill {
+    @include button-style($primary-color, #fff);
+
+    &:hover {
+        background: $primary-hover;
+    }
+}
